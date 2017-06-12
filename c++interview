@@ -11,6 +11,42 @@ c++中问什么一个类中的成员不能既是template，还是virtual的？
 同时virtual function 的是实现是利用一个虚函数表的东西，这种视线中，一个类的内存布局是要靠编译完成后才能够确定的。
 所以由以上的结论是完全矛盾的。
 3.template specialization是什么意思？dynamic_cast、static_cast等等强制转换都是什么意思？std::map和std::undered_map的时间
+(1)答案template specialization 模板定制指的是其实可以认为参数细化，定制一些特殊的场景。
+具体的代码：example：
+class man{
+private:
+int data;
+string name;
+public:
+man(string str,int date):name(str),data(date){}
+void setdata(int data)
+{
+this.data = data;
+}
+int getdata()
+{
+return data;
+}
+}
+template<T>
+void swapdata(T &t1,T &t2)
+{
+T temp=t2;
+t1=temp;
+t2=t1;
+}
+template<>
+void swapdata(man&ma1,man&ma2)
+{
+int data=ma1.getdata();
+ma1.setdata(ma2.getdata());
+ma2.setdata(data);
+}
+(2)几种强制类型转换：
+首先对应的是dynamic_cast类型基类类型的指针或引用安全的转换成派生类的指针或着引用。运行期间决定的
+static_cast类型对应的是
+reinterpret_cast类型的转化，一个指针类型可以转换成任意类型的指针。
+const_cast
 
 
 4.虚函数是怎么实现的？虚表放在哪个地方？类与虚表的关系对象和虚表的关系？
