@@ -1,0 +1,18 @@
+1.写一个程序对给定的数组排序
+最简单的答案：std::sort(a,a+100);
+2.class Animal
+{
+public:
+template<typename T> virtual void make_sound(){//}
+}
+c++中问什么一个类中的成员不能既是template，还是virtual的？
+知乎的答案：从unix/c开始，一个c/c++程序就可以被分开编译，然后用一个linker连接起来，这种编译就就会出现一个问题，就是一个编译单元对另外的编译单元就会一无所知。
+一个function template 最后到底会被instantiate为多少函数，要等整个程序编译完成后才能够确定。
+同时virtual function 的是实现是利用一个虚函数表的东西，这种视线中，一个类的内存布局是要靠编译完成后才能够确定的。
+所以由以上的结论是完全矛盾的。
+3.template specialization是什么意思？dynamic_cast、static_cast等等强制转换都是什么意思？std::map和std::undered_map的时间
+
+
+4.虚函数是怎么实现的？虚表放在哪个地方？类与虚表的关系对象和虚表的关系？
+5.cpp多态的实现原理？vector是怎么实现扩容的？仅遍历一边IP字符串，然后判断出这个字符串是否正确。
+
