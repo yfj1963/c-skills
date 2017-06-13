@@ -46,11 +46,21 @@ ma2.setdata(data);
 首先对应的是dynamic_cast类型基类类型的指针或引用安全的转换成派生类的指针或着引用。运行期间决定的，必要条件是基类中必须要有虚函数。
 static_cast类型对应的是
 reinterpret_cast类型的转化，一个指针类型可以转换成任意类型的指针。
-const_cast
-http://www.cnblogs.com/ider/archive/2011/07/22/cpp_cast_operator_part2.html
-
+const_cast主要是去除const属性，主要的作用对象是指针和引用example：
+void delconst(int val)
+{
+cout<<"val="<<val<<endl;
+}
+int main()
+{
+const int constnum = 10;
+delconst(const_cast<int *>(&constnum));
+}
+static_cast可以在任何类型之间的转换哪怕是指针转换成int类型呢，同时也具有dynamic_cast类型的作用，但是最重要的是基本类型之间的转换。
 4.虚函数是怎么实现的？虚表放在哪个地方？类与虚表的关系对象和虚表的关系？
+由函数指针的虚函数表，应该一个对象维护一张虚函数表。
 5.cpp多态的实现原理？vector是怎么实现扩容的？仅遍历一边IP字符串，然后判断出这个字符串是否正确。
+
 6.cpp实现向量的延迟计算。
 7.cpp定位内存泄露和profile的工具。
 8.vector在resize时是原来的多少倍？
