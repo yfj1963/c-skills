@@ -59,13 +59,59 @@ delconst(const_cast<int *>(&constnum));
 static_cast可以在任何类型之间的转换哪怕是指针转换成int类型呢，同时也具有dynamic_cast类型的作用，但是最重要的是基本类型之间的转换。
 4.虚函数是怎么实现的？虚表放在哪个地方？类与虚表的关系对象和虚表的关系？
 由函数指针的虚函数表，应该一个对象维护一张虚函数表。
-5.cpp多态的实现原理？vector是怎么实现扩容的？仅遍历一边IP字符串，然后判断出这个字符串是否正确。
+当子类覆盖父类的函数的时候，子类的函数指针会覆盖父类的函数指针的位置。
 
+
+
+
+
+5.cpp多态的实现原理？vector是怎么实现扩容的？仅遍历一边IP字符串，然后判断出这个字符串是否正确。
+（1）为需要的容量分配足够的内存。
+（2）将原来的数据拷贝到新申请的内存。
+（3）销毁原来内存中的元素。
+（4）归还原来的内存。
 6.cpp实现向量的延迟计算。
+这个也不太懂啊
 7.cpp定位内存泄露和profile的工具。
+这个不知道啊
 8.vector在resize时是原来的多少倍？
+两倍
 9.explicit关键字的作用？
+这个指的是必须是显示转换类型。
 10.实现一个不被继承的类。
+（1）顶一个构造函数为private类型的类，
+example:
+class base
+{
+public:
+int num;
+static base* construct(int num)
+{
+base *pb = new base();
+pb->num = num;
+return pb;
+}
+static void destroy(base *bp)
+{
+delete bp;
+bp = null;
+}
+private:
+base(){}
+~base(){}
+}
+int main()
+{
+base *bp =base::construct(10);
+cout<<bp->num<<endl;
+base::destroy();
+}
+（2）虚继承一个类，同时我的这个类的构造函数为private类型。
+
+
+
+
+
 11.反射、闭包机制？判断输入类的继承方式。
 12.其实最基本的问题很多人都不会啊。比如删除链表中的指定的节点。
 
