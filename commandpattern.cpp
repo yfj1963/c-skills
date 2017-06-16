@@ -5,11 +5,19 @@
  public:
  Reciever(){}
  ~Reciever(){}
- void action()
+ virtual void action() = 0;
+
+ };
+class recieverimpl : public Reciever
+{
+public:
+recieverimpl(){}
+~recieverimpl(){}
+void action()
  {
  cout<<"reciever message successful"<<endl;
  }
- };
+;
  class command
  {
  public：
@@ -50,10 +58,14 @@ command *_cmd;
 };
 int main()
 {
-Reciever *rev = new Reciever();
+Reciever *rev = new recieverimpl();
 command *cmd = new commandimpl(rev);
 invoker *invoke = new invoker(cmd);
 invoke->invoke();
+
+delete rev;
+delete cmd;
+delete invoke;
 return 1;
 }
  
