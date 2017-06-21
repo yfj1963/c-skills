@@ -32,7 +32,7 @@ adapter *_adp;
 int main()
 {
 adapter *adp = new adater();
-target *tg = new new adapterchild(adp);
+target *tg = new adapterchild(adp);
 tg->request();
 cin.get();
 return 1;
